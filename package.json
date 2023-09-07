@@ -6,9 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "vitepress dev posts",
-    "docs:build": "vitepress build posts",
-    "docs:preview": "vitepress preview posts"
+    "dev": "npm -C posts run dev",
+    "deploy": "npm -C posts run build"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +16,6 @@
     "unocss": "^0.55.7",
     "unplugin-vue-components": "^0.25.2",
     "vite": "^4.4.9",
-    "vitepress": "1.0.0-rc.10",
     "vue": "^3.3.4"
   }
 }
