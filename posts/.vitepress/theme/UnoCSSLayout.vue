@@ -44,7 +44,7 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
 <template>
   <DefaultTheme.Layout>
     <template #home-features-after>
-      <HomePage />
+      <!-- <HomePage /> -->
     </template>
   </DefaultTheme.Layout>
 </template>
