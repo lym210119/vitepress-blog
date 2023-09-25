@@ -13,6 +13,8 @@ export default defineConfig({
       { text: 'Tags', link: '/tags' },
       { text: 'About', link: '/about' },
       { text: 'Examples', link: '/markdown-examples' },
+      { text: 'Radio', link: 'radio.65style.eu.org' },
+      { text: 'OneDrive', link: 'oneindex.65style.eu.org' },
     ],
 
     sidebar: [
