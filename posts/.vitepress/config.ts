@@ -17,12 +17,6 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: 'Secne',
-        items: [
-          { text: 'Pu_Shu-I_Go_To_2000-CN-CD-FLAC-1999-BiGBiGWOLF', link: '/blog/Pu_Shu-I_Go_To_2000-CN-CD-FLAC-1999-BiGBiGWOLF' },
-        ]
-      },
-      {
         text: 'Markdown',
         items: [
           { text: 'Markdown Examples', link: '/blog/markdown-examples' },
