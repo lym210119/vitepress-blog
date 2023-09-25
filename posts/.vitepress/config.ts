@@ -9,12 +9,11 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       // { text: 'Home', link: '/' },
-      { text: 'Blog', link: '/blog/Pu_Shu-I_Go_To_2000-CN-CD-FLAC-1999-BiGBiGWOLF' },
+      { text: 'Blog', link: '/blog/markdown-examples' },
       { text: 'Tags', link: '/tags' },
       { text: 'About', link: '/about' },
-      { text: 'Examples', link: '/markdown-examples' },
-      { text: 'Radio', link: 'radio.65style.eu.org' },
-      { text: 'OneDrive', link: 'oneindex.65style.eu.org' },
+      { text: 'Radio', link: 'https://radio.65style.eu.org' },
+      { text: 'OneDrive', link: 'https://oneindex.65style.eu.org' },
     ],
 
     sidebar: [
