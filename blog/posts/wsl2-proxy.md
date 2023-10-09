@@ -26,27 +26,31 @@
 
 如果是采用`HTTP`协议：
 
-```
-export hostip=$(cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*')export https_proxy="http://${hostip}:7890";export http_proxy="http://${hostip}:7890";
+```bash
+export hostip=$(cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*')
+export https_proxy="http://${hostip}:7890";
+export http_proxy="http://${hostip}:7890";
 ```
 
 > 其中后两行的`7890`需要更换为自己代理服务器的端口号，在`Clash`的`主页`选项卡中可以查看。
 
 如果采用`socket5`协议：
 
-```
-export hostip=$(cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*')export http_proxy="socks5://${hostip}:7890"export https_proxy="socks5://${hostip}:7890"
+```bash
+export hostip=$(cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*')
+export http_proxy="socks5://${hostip}:7890"
+export https_proxy="socks5://${hostip}:7890"
 ```
 
 如果端口号一样则可以合并成为一句话：
 
-```
+```bash
 export all_proxy="socks5://${hostip}:7890"
 ```
 
 使用`curl`即可验证代理是否成功，如果有返回值则说明代理成功。
 
-```
+```bash
 curl www.google.com
 ```
 
@@ -58,8 +62,65 @@ curl www.google.com
 #!/bin/sh
 hostip=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
 wslip=$(hostname -I | awk '{print $1}')
-port=7890 PROXY_HTTP="http://${hostip}:${port}" 
-set_proxy(){  export http_proxy="${PROXY_HTTP}"  export HTTP_PROXY="${PROXY_HTTP}"   export https_proxy="${PROXY_HTTP}"  export HTTPS_proxy="${PROXY_HTTP}"   export ALL_PROXY="${PROXY_SOCKS5}"  export all_proxy=${PROXY_SOCKS5}   git config --global http.https://github.com.proxy ${PROXY_HTTP}  git config --global https.https://github.com.proxy ${PROXY_HTTP}   echo "Proxy has been opened."} unset_proxy(){  unset http_proxy  unset HTTP_PROXY  unset https_proxy  unset HTTPS_PROXY  unset ALL_PROXY  unset all_proxy  git config --global --unset http.https://github.com.proxy  git config --global --unset https.https://github.com.proxy   echo "Proxy has been closed."} test_setting(){  echo "Host IP:" ${hostip}  echo "WSL IP:" ${wslip}  echo "Try to connect to Google..."  resp=$(curl -I -s --connect-timeout 5 -m 5 -w "%{http_code}" -o /dev/null www.google.com)  if [ ${resp} = 200 ]; then    echo "Proxy setup succeeded!"  else    echo "Proxy setup failed!"  fi} if [ "$1" = "set" ]then  set_proxy elif [ "$1" = "unset" ]then  unset_proxy elif [ "$1" = "test" ]then  test_settingelse  echo "Unsupported arguments."fi
+port=10809
+ 
+PROXY_HTTP="http://${hostip}:${port}"
+ 
+set_proxy(){
+  export http_proxy="${PROXY_HTTP}"
+  export HTTP_PROXY="${PROXY_HTTP}"
+ 
+  export https_proxy="${PROXY_HTTP}"
+  export HTTPS_proxy="${PROXY_HTTP}"
+ 
+  export ALL_PROXY="${PROXY_SOCKS5}"
+  export all_proxy=${PROXY_SOCKS5}
+ 
+  git config --global http.https://github.com.proxy ${PROXY_HTTP}
+  git config --global https.https://github.com.proxy ${PROXY_HTTP}
+ 
+  echo "Proxy has been opened."
+}
+ 
+unset_proxy(){
+  unset http_proxy
+  unset HTTP_PROXY
+  unset https_proxy
+  unset HTTPS_PROXY
+  unset ALL_PROXY
+  unset all_proxy
+  git config --global --unset http.https://github.com.proxy
+  git config --global --unset https.https://github.com.proxy
+ 
+  echo "Proxy has been closed."
+}
+ 
+test_setting(){
+  echo "Host IP:" ${hostip}
+  echo "WSL IP:" ${wslip}
+  echo "Try to connect to Google..."
+  resp=$(curl -I -s --connect-timeout 5 -m 5 -w "%{http_code}" -o /dev/null www.google.com)
+  if [ ${resp} = 200 ]; then
+    echo "Proxy setup succeeded!"
+  else
+    echo "Proxy setup failed!"
+  fi
+}
+ 
+if [ "$1" = "set" ]
+then
+  set_proxy
+ 
+elif [ "$1" = "unset" ]
+then
+  unset_proxy
+ 
+elif [ "$1" = "test" ]
+then
+  test_setting
+else
+  echo "Unsupported arguments."
+fi
 ```
 
 > 注意：其中第4行的`<PORT>`更换为自己的代理端口号。
@@ -72,13 +133,13 @@ set_proxy(){  export http_proxy="${PROXY_HTTP}"  export HTTP_PROXY="${PROXY_HTTP
 
 可以在`~/.bashrc`中添加如下内容，并将其中的路径修改为上述脚本的路径：
 
-```
+```bash
 alias proxy="source /path/to/proxy.sh"
 ```
 
 然后输入如下命令：
 
-```
+```bash
 source ~/.bashrc
 ```
 
@@ -92,7 +153,7 @@ source ~/.bashrc
 
 也可以添加如下内容，即在每次shell启动时自动设置代理，同样的，更改其中的路径为自己的脚本路径：
 
-```
+```bash
 . /path/to/proxy.sh set
 ```
 

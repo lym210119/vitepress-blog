@@ -21,7 +21,8 @@ export default defineConfig({
         text: 'Markdown',
         items: [
           { text: 'Markdown Examples', link: '/blog/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/blog/api-examples' }
+          { text: 'Runtime API Examples', link: '/blog/api-examples' },
+          { text: 'wsl2 proxy', link: '/blog/wsl2-proxy' }
         ]
       }
     ],
