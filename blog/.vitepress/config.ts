@@ -9,7 +9,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       // { text: 'Home', link: '/' },
-      { text: 'Blog', link: '/blog/markdown-examples' },
+      { text: 'Blog', link: '/posts/markdown-examples' },
       { text: 'Tags', link: '/tags' },
       { text: 'About', link: '/about' },
       { text: 'Radio', link: 'https://radio.65style.eu.org' },
