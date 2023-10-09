@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm -C posts run dev",
-    "deploy": "npm -C posts run build"
+    "dev": "npm -C blog run dev",
+    "deploy": "npm -C blog run build"
   },
   "keywords": [],
   "author": "",
