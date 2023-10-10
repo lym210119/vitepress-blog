@@ -12,7 +12,7 @@ import { teamMembers } from '../../contributors'
             Meet The Team
           </h2>
           <div w-full p-10>
-            <!-- <VPTeamMembers size="small" :members="teamMembers" /> -->
+            <VPTeamMembers size="small" :members="teamMembers" />
           </div>
           <h2 id="sponsored-by" op70 font-normal pt-5 pb-2>
             Sponsored by
