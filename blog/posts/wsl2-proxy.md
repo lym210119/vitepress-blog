@@ -20,7 +20,6 @@
 
 > 如果找不到`Clash for Windows`，点击下方的`允许其他应用`，然后找到安装路径，将`Clash for Windows.exe`文件加入进来。
 
-## 2\. 配置WSL2
 
 ### 2.1 单次配置
 
