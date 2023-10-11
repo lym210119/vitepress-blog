@@ -27,7 +27,7 @@
 
 如果是采用`HTTP`协议：
 
-```bash
+```sh
 export hostip=$(cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*')
 export https_proxy="http://${hostip}:7890";
 export http_proxy="http://${hostip}:7890";
@@ -37,7 +37,7 @@ export http_proxy="http://${hostip}:7890";
 
 如果采用`socket5`协议：
 
-```bash
+```sh
 export hostip=$(cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*')
 export http_proxy="socks5://${hostip}:7890"
 export https_proxy="socks5://${hostip}:7890"
@@ -45,13 +45,13 @@ export https_proxy="socks5://${hostip}:7890"
 
 如果端口号一样则可以合并成为一句话：
 
-```bash
+```sh
 export all_proxy="socks5://${hostip}:7890"
 ```
 
 使用`curl`即可验证代理是否成功，如果有返回值则说明代理成功。
 
-```bash
+```sh
 curl www.google.com
 ```
 
@@ -59,7 +59,7 @@ curl www.google.com
 
 这种配置方法适用于**长期配置**，也就是写一个脚本，然后可以通过命令启动代理。新建`proxy.sh`脚本如下：
 
-```bash
+```sh
 #!/bin/sh
 hostip=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
 wslip=$(hostname -I | awk '{print $1}')
@@ -134,13 +134,13 @@ fi
 
 可以在`~/.bashrc`中添加如下内容，并将其中的路径修改为上述脚本的路径：
 
-```bash
+```sh
 alias proxy="source /path/to/proxy.sh"
 ```
 
 然后输入如下命令：
 
-```bash
+```sh
 source ~/.bashrc
 ```
 
@@ -154,7 +154,7 @@ source ~/.bashrc
 
 也可以添加如下内容，即在每次shell启动时自动设置代理，同样的，更改其中的路径为自己的脚本路径：
 
-```bash
+```sh
 . /path/to/proxy.sh set
 ```
 
