@@ -9,21 +9,17 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       // { text: 'Home', link: '/' },
-      { text: 'Blog', link: '/posts/markdown-examples' },
-      { text: 'Tags', link: '/tags' },
-      { text: 'About', link: '/about' },
-      { text: 'Radio', link: 'https://radio.65style.eu.org' },
+      { text: 'CSS Tricks', link: '/css/tab-circle-border' },
+      { text: 'Aria2', link: 'https://aria2.65style.eu.org' },
       { text: 'OneDrive', link: 'https://oneindex.65style.eu.org' },
     ],
 
     sidebar: [
       {
-        text: 'Markdown',
+        text: 'CSS Tricks',
         items: [
-          { text: 'Markdown Examples', link: '/posts/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/posts/api-examples' },
-          { text: 'wsl2 proxy', link: '/posts/wsl2-proxy' }
-        ]
+          { text: 'Tab Circle Border', link: '/css/tab-circle-border' },
+        ],
       }
     ],
 
