@@ -51,21 +51,21 @@ const tabId = ref(1)
 
 /* 
   重点
-  利用选中项的两个伪元素定位到右上角
-  利用选中项的兄弟元素的伪元素定位到右下角
+  利用选中项的 .before 和 ::before 重叠定位到右上角
+  利用选中项的 .after 和 ::after 重叠定位到右下角
 */
 .active::before {
-  @apply top--10px rounded-br-10px bg-white z-2
+  @apply top--10px rounded-tr-10px bg-white z-2
 }
-
-.active::after {
+.active .before {
   @apply top--10px bg-gray-100 z-1
 }
 
-.active + .tab-item::before {
-  @apply top-0 bg-gray-100
+.active::after {
+  @apply top--10px rounded-br-10px bg-white z-2
 }
-.active + .tab-item::after {
-  @apply top-0 bg-white rounded-tr-10px
+
+.active .after {
+  @apply top--10px bg-gray-100 z-1
 }
 </style>
