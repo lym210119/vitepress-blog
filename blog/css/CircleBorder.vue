@@ -8,8 +8,10 @@
           :key="item"
           @click="tabId = item"
         >
+          <span class="before"></span>
           <span class="line"></span>
           <span>tab {{ item }}</span>
+          <span class="after"></span>
       </div>
     </div>
 
