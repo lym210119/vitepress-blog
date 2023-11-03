@@ -5,6 +5,30 @@ export default defineConfig({
   outDir: './dist',
   title: "65style's Blog",
   description: "65style's Blog",
+  head: [
+    [
+      'scirpt',
+      { 
+        async: 'true',
+        src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4971335259369317',
+        crossorigin: 'anonymous'
+      }
+    ],
+    [
+      'script',
+      {
+        async: 'true',
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-PRR29BLJVR',
+      },
+    ],
+    [
+      'script', {},
+      "window.dataLayer = window.dataLayer || [];\n" +
+      "function gtag(){dataLayer.push(arguments);}\n" +
+      "gtag('js', new Date());\n" +
+      "gtag('config', 'G-PRR29BLJVR');",
+    ],
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
